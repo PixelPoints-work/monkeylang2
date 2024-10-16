@@ -9,12 +9,17 @@ type Lexer struct {
 	ch           byte
 }
 
+// Lexer init
 func New(input string) *Lexer {
 	l := &Lexer{input: input}
 	l.readChar()
 	return l
 
 }
+
+//                #################
+//               #  Lexer methods  #
+//                ################
 
 func (l *Lexer) readChar() {
 	if l.readPosition >= len(l.input) {
@@ -33,21 +38,21 @@ func (l *Lexer) NextToken() token.Token {
 	switch l.ch {
 	case '=':
 		tok = newToken(token.ASSIGN, l.ch)
- 	case '+':                        
- 		tok = newToken(token.PLUS, l.ch)  
-    case '-':
-        tok = newToken(token.MINUS, l.ch)
-    case '!':
-        tok = newToken(token.BANG, l.ch)
-    case '/':
-        tok = newToken(token.SLASH, l.ch)
-    case '*':
-        tok = newToken(token.ASTERISK, l.ch)
-    case '<':
-        tok = newToken(token.LT, l.ch)
-    case '>':
-        tok = newToken(token.GT, l.ch)
-    case ';':
+	case '+':
+		tok = newToken(token.PLUS, l.ch)
+	case '-':
+		tok = newToken(token.MINUS, l.ch)
+	case '!':
+		tok = newToken(token.BANG, l.ch)
+	case '/':
+		tok = newToken(token.SLASH, l.ch)
+	case '*':
+		tok = newToken(token.ASTERISK, l.ch)
+	case '<':
+		tok = newToken(token.LT, l.ch)
+	case '>':
+		tok = newToken(token.GT, l.ch)
+	case ';':
 		tok = newToken(token.SEMICOLON, l.ch)
 	case '(':
 		tok = newToken(token.LPAREN, l.ch)
@@ -55,7 +60,6 @@ func (l *Lexer) NextToken() token.Token {
 		tok = newToken(token.RPAREN, l.ch)
 	case ',':
 		tok = newToken(token.COMMA, l.ch)
-
 
 	case '{':
 		tok = newToken(token.LBRACE, l.ch)
@@ -104,6 +108,10 @@ func (l *Lexer) readNumber() string {
 	}
 	return l.input[position:l.position]
 }
+
+//                #####################
+//               #   Helper Functions  #
+//                #####################
 
 func isDigit(ch byte) bool {
 	return '0' <= ch && ch <= '9'

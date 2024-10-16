@@ -1,8 +1,7 @@
 package token
 
 // Making tokens for the keywords of monkeylang. A struct that takes in a
-// A custom type "TokenType" which is a string and a string Literal field which
-// Is the token constants and their string interpretation.
+// A custom type "TokenType" and a string literal.
 
 type TokenType string
 
