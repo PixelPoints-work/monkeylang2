@@ -1,7 +1,6 @@
 package parser
 
 import (
-	"fmt"
 	"monkeylang2/ast"
 	"monkeylang2/lexer"
 	"testing"
@@ -138,15 +137,7 @@ func TestIdentifierExpression(t *testing.T) {
 
 func TestIntegerLiteralExpression(t *testing.T) {
 	input := "5;"
-	fmt.Printf("Testing integer expression with input: %s\n", input)
 	l := lexer.New(input)
-
-	tok := l.NextToken()
-	fmt.Printf("First token: Type=%s, Literal=%s\n", tok.Type, tok.Literal)
-	tok = l.NextToken()
-	fmt.Printf("Second token: Type=%s, Literal=%s\n", tok.Type, tok.Literal)
-
-	l = lexer.New(input)
 	p := New(l)
 	program := p.ParseProgram()
 	checkParserErrors(t, p)
